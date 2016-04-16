@@ -1,0 +1,6 @@
+@import url('node_modules/codemirror/lib/codemirror.css');
+@import url('node_modules/codemirror/theme/railscasts.css');
+
+.CodeMirror {
+  font-size: 18px
+}
