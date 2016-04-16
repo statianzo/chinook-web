@@ -1,13 +1,7 @@
-const CodeMirror = require('codemirror');
-require('codemirror/mode/sql/sql')
 require('./index.css')
+console.log('y')
 const db = require('./db');
-db.exec('SELECT COUNT(*) FROM Artist')
-  .then(console.log.bind(console), console.log.bind(console));
+const Editor = require('./components/Editor');
 
-const el = document.getElementById('editor');
-CodeMirror(el, {
-  lineNumbers: true,
-  mode: 'text/x-sql',
-  theme: 'railscasts'
-});
+const editorEl = document.getElementById('editor');
+const editor = new Editor(editorEl);
