@@ -4,5 +4,9 @@
 }
 
 .Editor__CodeMirror {
-  font-size: 18px
+  font-size: 20px;
+}
+
+.Editor__CodeMirror .CodeMirror {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, "monospace" !important;
 }

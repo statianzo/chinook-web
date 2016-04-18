@@ -1,5 +1,8 @@
 require('./index.css')
 const db = require('./db');
+//Prime the database
+db.schema();
+
 const Editor = require('./components/Editor');
 const Result = require('./components/Result');
 
