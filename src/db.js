@@ -1,7 +1,7 @@
 const SQL = require('sql.js');
 let _db = null;
 const load = () => {
-  if (_db) return Promse.resolve(db);
+  if (_db) return Promise.resolve(_db);
   return fetch('vendor/chinook.sqlite')
   .then((body) => body.arrayBuffer())
   .then((buf) => (

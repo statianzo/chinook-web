@@ -1,0 +1,8 @@
+.Editor {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.Editor__CodeMirror {
+  font-size: 18px
+}

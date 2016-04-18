@@ -1,0 +1,87 @@
+require('./Result.css');
+
+class Result {
+  constructor(el) {
+    this.el = el;
+    this.results = null;
+    this.setResults = this.setResults.bind(this);
+    this.setError = this.setError.bind(this);
+    this.render();
+  }
+
+  setResults(results) {
+    this.error = null;
+    this.results = results;
+    this.render();
+  }
+
+  setError(error) {
+    this.error = error;
+    this.results = null;
+    this.render();
+
+  }
+
+  render() {
+    if (this.error) {
+      this.el.innerHTML = this.renderError();
+    }
+    else if (this.results) {
+      this.el.innerHTML = this.renderResults();
+    }
+    else {
+      this.el.innerHTML = this.renderEmpty();
+    }
+  }
+
+  renderError() {
+    return `
+      <div>Error</div>
+      <div>${this.error.message}</div>
+    `;
+  }
+  renderEmpty() {
+    return `
+      <div>No Results</div>
+    `;
+  }
+
+  renderValues(result) {
+    return result.values.map((row) => {
+      return `
+        <tr class='Result__Row'>
+          ${row.map((value) => `<td class='Result__Value'>${value}</td>`).join('')}
+        </tr>
+      `
+    }).join('');
+  }
+
+  renderHeaders(result) {
+    return result.columns.map((column) => {
+      return `<th class='Result__Header'>${column}</th>`
+    }).join('');
+  }
+
+  renderTable(result) {
+    return `
+      <table class='Result__Table'>
+        <thead>
+          <tr>
+            ${this.renderHeaders(result)}
+          </tr>
+        </thead>
+        <tbody>
+            ${this.renderValues(result)}
+        </tbody>
+      </table>
+    `;
+  }
+
+  renderResults() {
+    return this.results.map((result) => {
+      return this.renderTable(result);
+    }).join('');
+  }
+}
+
+module.exports = Result;

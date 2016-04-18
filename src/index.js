@@ -1,7 +1,16 @@
 require('./index.css')
-console.log('y')
 const db = require('./db');
 const Editor = require('./components/Editor');
+const Result = require('./components/Result');
 
-const editorEl = document.getElementById('editor');
+const editorEl = document.querySelector('.Editor');
 const editor = new Editor(editorEl);
+
+const resultEl = document.querySelector('.Result');
+const result = new Result(resultEl);
+
+editor.onRun = (value) => {
+  db.exec(value)
+    .then(result.setResults, result.setError);
+};
+

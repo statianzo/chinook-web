@@ -1,0 +1,36 @@
+.Result {
+  flex: 0 1 0;
+  flex-basis: 50%;
+  max-width: 50%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 8px;
+
+}
+
+
+.Result__Table {
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.Result__Header {
+  background: rgba(0, 0, 0, 0.4);
+  text-align: left;
+  padding: 4px;
+}
+
+.Result__Row {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.Result__Row:nth-of-type(odd) {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.Result__Value {
+  color: rgba(0, 0, 0, 0.9);
+  padding: 4px;
+}
