@@ -1,0 +1,14 @@
+.Schema {
+  padding: 8px;
+}
+
+.Schema__Table {
+  margin-bottom: 8px;
+}
+.Schema__TableColumns {
+  font-size: 12px;
+}
+
+.Schema__ColumnType {
+  font-size: 12px;
+}

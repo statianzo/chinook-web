@@ -20,11 +20,14 @@ module.exports = {
     return load().then((db) => {
       const result = db.exec(`SELECT name FROM sqlite_master WHERE type = 'table';`)
       const tables = Array.prototype.concat.apply([], result[0].values);
-      return tables.reduce((memo, table) => {
-        const columns = db.exec(`pragma table_info("${table}");`)[0].values;
-        memo[table] = columns.map(([cid, name, type, notnull, dflt, pk]) => ({cid, name, type, notnull, dflt, pk}));
+      return tables.map((table) => {
+        const rawColumns = db.exec(`pragma table_info("${table}");`)[0].values;
+        return {
+          name: table,
+          columns: rawColumns.map(([cid, name, type, notnull, dflt, pk]) => ({cid, name, type, notnull, dflt, pk}))
+        }
         return memo;
-      }, {});
+      });
     });
   }
 };
