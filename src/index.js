@@ -23,8 +23,12 @@ const execute = () => {
     .then(result.setResults, result.setError);
 };
 
+db.exec('PRAGMA foreign_keys = on;')
 db.schema().then(schema.setTables);
 
 nav.onRun = execute;
 editor.onRun = execute;
 
+nav.onSampleChange = (script) => {
+  editor.setValue(script);
+};

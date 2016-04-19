@@ -1,5 +1,6 @@
 const CodeMirror = require('codemirror');
 require('codemirror/mode/sql/sql')
+require('codemirror/addon/comment/comment')
 require('./Editor.css');
 
 class Editor {
@@ -10,13 +11,21 @@ class Editor {
   }
 
   handleKeydown(cm, e) {
+    console.log(e.code)
     if ((e.ctrlKey || e.metaKey) && e.code === 'Enter') {
       this.onRun && this.onRun();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.code === 'Slash') {
+      this.doc.toggleComment();
     }
   }
 
   getValue() {
     return this.doc.getValue();
+  }
+
+  setValue(val) {
+    return this.doc.setValue(val);
   }
 
   render() {
