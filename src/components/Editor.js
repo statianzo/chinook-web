@@ -1,12 +1,18 @@
 const CodeMirror = require('codemirror');
 require('codemirror/mode/sql/sql')
 require('./Editor.css');
-const delegate = require('../utils/delegate');
 
 class Editor {
   constructor(el) {
     this.el = el;
+    this.handleKeydown = this.handleKeydown.bind(this);
     this.render();
+  }
+
+  handleKeydown(cm, e) {
+    if ((e.ctrlKey || e.metaKey) && e.code === 'Enter') {
+      this.onRun && this.onRun();
+    }
   }
 
   getValue() {
@@ -22,6 +28,8 @@ class Editor {
       mode: 'text/x-sql',
       theme: 'railscasts'
     });
+
+    this.doc.on('keydown', this.handleKeydown);
   }
 }
 

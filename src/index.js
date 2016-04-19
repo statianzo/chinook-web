@@ -18,9 +18,13 @@ const result = new Result(resultEl);
 const schemaEl = document.querySelector('.Schema');
 const schema = new Schema(schemaEl);
 
-db.schema().then(schema.setTables);
-nav.onRun = () => {
+const execute = () => {
   db.exec(editor.getValue())
     .then(result.setResults, result.setError);
 };
+
+db.schema().then(schema.setTables);
+
+nav.onRun = execute;
+editor.onRun = execute;
 
