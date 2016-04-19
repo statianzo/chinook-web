@@ -1,5 +1,6 @@
 .Schema {
   padding: 8px;
+  overflow: auto;
 }
 
 .Schema__Table {
@@ -7,8 +8,11 @@
 }
 .Schema__TableColumns {
   font-size: 12px;
+  width: 100%;
 }
 
 .Schema__ColumnType {
   font-size: 12px;
+  width: 50%;
+  color: rgba(255, 255, 255, 0.4);
 }

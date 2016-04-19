@@ -1,0 +1,23 @@
+.Nav {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Nav__Header {
+  padding: 16px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #da4939;
+}
+
+.Nav__Links {
+  flex: 1;
+}
+
+.Nav__Run {
+  background: #098D48;
+  padding: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  border: none;
+}

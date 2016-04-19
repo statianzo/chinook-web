@@ -17,21 +17,15 @@ body {
   font-size: 16px;
 }
 
-.Nav {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.Nav__Header {
-  padding: 16px;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: #da4939;
-}
-
 .Content {
   display: flex;
   justify-content: stretch;
+  flex-direction: column;
+}
+.Content__Top {
+  display: flex;
+  height: 60%;
+  max-height: 600px;
 }
 
 /*.cm-s-railscasts.CodeMirror {background: #2b2b2b; color: #f4f1ed;}*/

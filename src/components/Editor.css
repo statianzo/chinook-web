@@ -1,12 +1,22 @@
 .Editor {
-  flex-basis: 50%;
-  max-width: 50%;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: stretch;
+  position: relative;
 }
 
 .Editor__CodeMirror {
-  font-size: 20px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  font-size: 24px;
+  overflow-y: auto;
 }
 
 .Editor__CodeMirror .CodeMirror {
+  flex: 1;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, "monospace" !important;
+  height: 100%;;
 }
