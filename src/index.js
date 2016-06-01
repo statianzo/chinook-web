@@ -20,7 +20,10 @@ const schema = new Schema(schemaEl);
 
 const execute = () => {
   db.exec(editor.getValue())
-    .then(result.setResults, result.setError);
+    .then(({results, rowsModified}) => {
+      result.setRowsModified(rowsModified);
+      result.setResults(results);
+    }, result.setError);
 };
 
 db.exec('PRAGMA foreign_keys = on;')

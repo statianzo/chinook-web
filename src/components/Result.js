@@ -4,9 +4,14 @@ class Result {
   constructor(el) {
     this.el = el;
     this.results = null;
+    this.rowsModified = 0;
     this.setResults = this.setResults.bind(this);
     this.setError = this.setError.bind(this);
     this.render();
+  }
+
+  setRowsModified(rowsModified) {
+    this.rowsModified = rowsModified;
   }
 
   setResults(results) {
@@ -18,6 +23,7 @@ class Result {
   setError(error) {
     this.error = error;
     this.results = null;
+    this.rowsModified = null;
     this.render();
 
   }
@@ -26,8 +32,11 @@ class Result {
     if (this.error) {
       this.el.innerHTML = this.renderError();
     }
-    else if (this.results) {
+    else if (this.results && this.results.length > 0) {
       this.el.innerHTML = this.renderResults();
+    }
+    else if (this.results && this.rowsModified) {
+      this.el.innerHTML = this.renderRowsModified();
     }
     else {
       this.el.innerHTML = this.renderEmpty();
@@ -38,6 +47,11 @@ class Result {
     return `
       <div>Error</div>
       <div>${this.error.message}</div>
+    `;
+  }
+  renderRowsModified() {
+    return `
+      <div>${this.rowsModified} rows modified</div>
     `;
   }
   renderEmpty() {

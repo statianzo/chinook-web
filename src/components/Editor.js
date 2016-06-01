@@ -11,7 +11,6 @@ class Editor {
   }
 
   handleKeydown(cm, e) {
-    console.log(e.code)
     if ((e.ctrlKey || e.metaKey) && e.code === 'Enter') {
       this.onRun && this.onRun();
     }
