@@ -1,10 +1,10 @@
-# chinook-web
+#chinook-web
 
 The [Chinook](https://chinookdatabase.codeplex.com) sample database on sql.js
 
 ## Live Demo
 
-Check out [https://jxs.me/chinook-web](https://jxs.me/chinook-web)
+Head over to [https://jxs.me/chinook-web](https://jxs.me/chinook-web)
 
 ## Running Locally
 
