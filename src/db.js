@@ -12,6 +12,7 @@ const load = () => {
 module.exports = {
   exec(query) {
     return load().then((db) => ({
+      db,
       results: db.exec(query),
       rowsModified: db.getRowsModified()
     }));

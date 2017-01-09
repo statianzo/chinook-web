@@ -25,28 +25,39 @@ class Result {
     this.results = null;
     this.rowsModified = null;
     this.render();
-
   }
 
   render() {
+    let content;
     if (this.error) {
-      this.el.innerHTML = this.renderError();
+      content = this.renderError();
     }
     else if (this.results && this.results.length > 0) {
-      this.el.innerHTML = this.renderResults();
+      content = this.renderResults();
     }
     else if (this.results && this.rowsModified) {
-      this.el.innerHTML = this.renderRowsModified();
+      content = this.renderRowsModified();
     }
     else {
-      this.el.innerHTML = this.renderEmpty();
+      content = this.renderEmpty();
     }
+
+    this.el.innerHTML = `
+      ${this.renderDate()}
+      ${content}
+    `;
+  }
+
+  renderDate() {
+    const time = new Date().toTimeString().slice(0,8);
+    return `
+      <div class="Result__Date">${time}</div>
+    `;
   }
 
   renderError() {
     return `
-      <div>Error</div>
-      <div>${this.error.message}</div>
+      <div>Error: ${this.error.message}</div>
     `;
   }
   renderRowsModified() {
@@ -78,16 +89,21 @@ class Result {
 
   renderTable(result) {
     return `
-      <table class='Result__Table'>
-        <thead>
-          <tr>
-            ${this.renderHeaders(result)}
-          </tr>
-        </thead>
-        <tbody>
-            ${this.renderValues(result)}
-        </tbody>
-      </table>
+      <div>
+        <div class="Result__RowCount">
+          ${result.values.length} Rows
+        </div>
+        <table class='Result__Table'>
+          <thead>
+            <tr>
+              ${this.renderHeaders(result)}
+            </tr>
+          </thead>
+          <tbody>
+              ${this.renderValues(result)}
+          </tbody>
+        </table>
+      </div>
     `;
   }
 
