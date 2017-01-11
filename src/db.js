@@ -9,12 +9,15 @@ const load = () => {
   ));
 };
 
+const ddlPattern = /CREATE|ALTER|DROP/ig;
+
 module.exports = {
   exec(query) {
     return load().then((db) => ({
       db,
       results: db.exec(query),
-      rowsModified: db.getRowsModified()
+      rowsModified: db.getRowsModified(),
+      isDDL: !!query.match(ddlPattern)
     }));
   },
   run(query) {
@@ -23,7 +26,7 @@ module.exports = {
   schema() {
     return load().then((db) => {
       const result = db.exec(`SELECT name FROM sqlite_master WHERE type = 'table';`)
-      const tables = Array.prototype.concat.apply([], result[0].values);
+      const tables = Array.prototype.concat.apply([], result[0].values).sort();
       return tables.map((table) => {
         const rawColumns = db.exec(`pragma table_info("${table}");`)[0].values;
         return {

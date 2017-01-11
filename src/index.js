@@ -18,16 +18,21 @@ const result = new Result(resultEl);
 const schemaEl = document.querySelector('.Schema');
 const schema = new Schema(schemaEl);
 
+const refreshSchema = () => (
+  db.schema().then(schema.setTables)
+);
+
 const execute = () => {
   db.exec(editor.getValue())
-    .then(({results, rowsModified}) => {
+    .then(({isDDL, results, rowsModified}) => {
       result.setRowsModified(rowsModified);
       result.setResults(results);
+      return isDDL ? refreshSchema() : null;
     }, result.setError);
 };
 
 db.exec('PRAGMA foreign_keys = on;')
-db.schema().then(schema.setTables);
+refreshSchema();
 
 nav.onRun = execute;
 editor.onRun = execute;
