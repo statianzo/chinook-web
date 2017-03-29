@@ -1,4 +1,5 @@
-const SQL = require('sql.js');
+import SQL from 'sql.js';
+
 let _db = null;
 const load = () => {
   if (_db) return _db;
