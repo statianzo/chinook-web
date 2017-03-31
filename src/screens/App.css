@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  height: 100%;
+}
+.App__Top {
+  display: flex;
+  height: 50%;
+  max-height: 500px;
+}
+
+.App__Result {
+  flex: 1;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 8px;
+}

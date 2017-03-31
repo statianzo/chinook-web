@@ -1,6 +1,6 @@
 const CodeMirror = require('codemirror');
-require('codemirror/mode/sql/sql')
-require('codemirror/addon/comment/comment')
+require('codemirror/mode/sql/sql');
+require('codemirror/addon/comment/comment');
 require('./Editor.css');
 
 class Editor {
@@ -34,7 +34,7 @@ class Editor {
     this.doc = CodeMirror(this.el.querySelector('.Editor__CodeMirror'), {
       lineNumbers: true,
       mode: 'text/x-sql',
-      theme: 'railscasts'
+      theme: 'railscasts',
     });
 
     this.doc.on('keydown', this.handleKeydown);
