@@ -20,7 +20,7 @@
 
 .Editor__CodeMirror .CodeMirror {
   flex: 1;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, "monospace" !important;
+  font-family: 'Fira Mono', Consolas, 'Liberation Mono', Menlo, Courier, 'monospace' !important;
   height: 100%;;
 }
 
