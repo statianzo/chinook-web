@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300:400:600:700');
 @import url('node_modules/normalize.css/normalize.css');
 
-html, body, .app, .App {
+html, body, .app {
   height: 100%;
 }
 
@@ -13,5 +14,6 @@ body {
   background: #2b2b2b;
   color: #f4f1ed;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 
