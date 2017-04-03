@@ -4,7 +4,7 @@
 .Editor {
   display: flex;
   flex: 1;
-  height: 500px;
+  height: 100%;
   align-items: stretch;
   position: relative;
 }

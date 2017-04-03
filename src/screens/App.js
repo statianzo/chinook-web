@@ -2,6 +2,7 @@ import {h, Component} from 'preact';
 import Nav from './Nav';
 import Schema from './Schema';
 import Editor from './Editor';
+import Result from './Result';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,9 @@ class App extends Component {
           <Schema dispatch={this.props.dispatch} state={this.props.state} />
           <Editor />
         </div>
-        <div className="App__Result" />
+        <div className="App__Result">
+          <Result dispatch={this.props.dispatch} state={this.props.state} />
+        </div>
       </div>
     );
   }
