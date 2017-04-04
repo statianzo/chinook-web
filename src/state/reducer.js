@@ -1,5 +1,8 @@
 const initialState = () => ({
+  resultState: 'IDLE',
+  results: [],
   schema: [],
+  text: '',
 });
 
 const reducer = (action, state = initialState()) => {
@@ -10,6 +13,25 @@ const reducer = (action, state = initialState()) => {
       return {
         ...state,
         schema,
+      };
+    }
+
+    case 'DB__SQL_EXECUTED': {
+      const {results} = action.payload;
+
+      return {
+        ...state,
+        resultState: 'RESULTS',
+        results,
+      };
+    }
+
+    case 'EDITOR__TEXT_CHANGED': {
+      const {text} = action.payload;
+
+      return {
+        ...state,
+        text,
       };
     }
     default: {

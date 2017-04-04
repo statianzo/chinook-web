@@ -14,7 +14,9 @@ const SchemaTable = ({table}) => (
   <div className="Schema__Table">
     <div>{table.name}</div>
     <table className="Schema__TableColumns">
-      {table.columns.map(column => <SchemaColumn column={column} />)}
+      {table.columns.map(column => (
+        <SchemaColumn key={column.name} column={column} />
+      ))}
     </table>
   </div>
 );
@@ -24,10 +26,14 @@ class Schema extends Component {
     this.props.loadSchema();
   };
 
+  shouldComponentUpdate = nextProps => this.props.schema !== nextProps.schema;
+
   render = () => (
     <div className="Schema">
       <div className="Schema__Tables">
-        {this.props.schema.map(table => <SchemaTable table={table} />)}
+        {this.props.schema.map(table => (
+          <SchemaTable key={table.name} table={table} />
+        ))}
       </div>
     </div>
   );

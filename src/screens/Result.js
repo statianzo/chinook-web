@@ -17,7 +17,7 @@ const ResultTable = ({result}) => (
       <thead>
         <tr>
           {result.columns.map((column, i) => (
-            <th key={i} class="Result__Header">${column}</th>
+            <th key={i} class="Result__Header">{column}</th>
           ))}
         </tr>
       </thead>
@@ -29,6 +29,8 @@ const ResultTable = ({result}) => (
 );
 
 class Result extends Component {
+  shouldComponentUpdate = nextProps => this.props.results !== nextProps.results;
+
   render() {
     switch (this.props.resultState) {
       case 'NO_RESULTS':

@@ -12,7 +12,7 @@ class App extends Component {
         <Nav />
         <div className="App__Top">
           <Schema dispatch={this.props.dispatch} state={this.props.state} />
-          <Editor />
+          <Editor dispatch={this.props.dispatch} state={this.props.state} />
         </div>
         <div className="App__Result">
           <Result dispatch={this.props.dispatch} state={this.props.state} />

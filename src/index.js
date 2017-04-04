@@ -27,25 +27,23 @@ const appEl = document.querySelector('.app');
 
 class State extends Component {
   state = reducer({type: '@INIT'});
-  dispatch = (action, state) => this.setState(reducer.bind(null, action));
+  dispatch = action => this.setState(reducer.bind(null, action));
   render = () => <App state={this.state} dispatch={this.dispatch} />;
 }
 
 render(<State />, appEl);
 
-
-
 //const refreshSchema = () => (
-  //db.schema().then(schema.setTables)
+//db.schema().then(schema.setTables)
 //);
 
 //const execute = () => {
-  //db.exec(editor.getValue())
-    //.then(({isDDL, results, rowsModified}) => {
-      //result.setRowsModified(rowsModified);
-      //result.setResults(results);
-      //return isDDL ? refreshSchema() : null;
-    //}, result.setError);
+//db.exec(editor.getValue())
+//.then(({isDDL, results, rowsModified}) => {
+//result.setRowsModified(rowsModified);
+//result.setResults(results);
+//return isDDL ? refreshSchema() : null;
+//}, result.setError);
 //};
 
 //db.exec('PRAGMA foreign_keys = on;')
@@ -55,6 +53,5 @@ render(<State />, appEl);
 //editor.onRun = execute;
 
 //nav.onSampleChange = (script) => {
-  //editor.setValue(script);
+//editor.setValue(script);
 //};
-
